@@ -2,7 +2,7 @@
     "configurations": [
     {
         "name": "Launch Program",
-        "program": "${workspaceFolder}/index.html",
+        "program": "${workspaceFolder}/projetos/script.js",
         "request": "launch",
         "skipFiles": [
             "<node_internals>/**"
