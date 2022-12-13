@@ -12,21 +12,8 @@ const funcoes = [
         return v1/v2
     }
 ]
-function manipulação(){
 
-}
 
-function muda(...valor_class){
-    valor_class.map((elemen,ind)=>{
-         elemen.classlist.toggles("ola")
-         return pegaNU(onumero)
-    })
-    function pegaNU(valor){
-        var primeiroN= Number(valor)
-        caixa.value=primeiroN
-
-    }
-}
 
 var valores = [...document.getElementsByClassName("numero")]
 var manipula = [...document.getElementsByClassName("manipuladores")]
@@ -41,7 +28,12 @@ valores.map((elemento,inds)=>{
 })
 manipula.map((elemento,ind)=>{
     elemento.addEventListener("click",()=>{
-    muda(...valores)
+    valores.map((ele,ind)=>{
+        ele.classList.add("colet")
+
+    })
+    var segundoN = [...window.document.getElementsByClassName("numero colet")]
+    console.log(segundoN)
 
     if(ind==0){
 
