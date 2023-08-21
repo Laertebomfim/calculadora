@@ -1,15 +1,14 @@
 
 import Header from "./componentes/moleculas/Header"
+import Main from "./componentes/moleculas/Main"
 function App() {
 
   return (
     <>
-      <main className="font-fontPadrao p-5 bg-cinza2">
+      <main className="font-fontPadrao p-5 bg-cinza2 w-screen h-screen">
         <section className="max-w-[350px]" >
           <Header/>
-
-          <section>
-          </section>
+          <Main/>
         </section>
       </main>
     </>
