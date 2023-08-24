@@ -1,6 +1,7 @@
 import { useState } from "react";
 import NumarosMain from "../atomo/NumarosMain";
 import  fun from "../../funCauculadora/funçoes"
+import OperadoMain from "../atomo/OperadoMain";
 //pega dado  
 //variavel para pega os numeros 
 //outra para reçebe dentro de um veto ou objeto [{numero:121, operedo:/}]  
@@ -23,7 +24,7 @@ import  fun from "../../funCauculadora/funçoes"
 // no final do veto vai fica a funçao [156,-]
 export default function Main (){
     const [exibir,setexibir] = useState("0")
-    const [vetoNumero,setVetoNumero] = useState([{ operedo:"+",numero:"",operedo2:""}]) 
+    const [vetoNumero,setVetoNumero] = useState([{ operado:"+",numero:"",operado2:""}]) 
 
     return (
         <section>
@@ -62,7 +63,10 @@ export default function Main (){
                         Numero="6"
                         stete ={{exibir,setexibir,vetoNumero,setVetoNumero}} 
                         />
-                    <div className="flex justify-center items-center bg-branco rounded-lg">+</div>
+                    <OperadoMain 
+                        Operado={"+"}
+                        stete ={{exibir,setexibir,vetoNumero,setVetoNumero}}
+                    />
                     <NumarosMain 
                         Numero="1"
                         stete ={{exibir,setexibir,vetoNumero,setVetoNumero}} 
@@ -75,7 +79,11 @@ export default function Main (){
                         Numero="3"
                         stete ={{exibir,setexibir,vetoNumero,setVetoNumero}} 
                     />
-                    <div className="flex justify-center items-center bg-branco rounded-lg">-</div>
+
+                    <OperadoMain 
+                        Operado={"-"}
+                        stete ={{exibir,setexibir,vetoNumero,setVetoNumero}}
+                    />
                     <div className="flex justify-center items-center bg-branco rounded-lg">.</div>
 
                     <NumarosMain 
@@ -83,8 +91,14 @@ export default function Main (){
                         stete ={{exibir,setexibir,vetoNumero,setVetoNumero}} 
                     />
 
-                    <div className="flex justify-center items-center bg-branco rounded-lg">/</div>
-                    <div className="flex justify-center items-center bg-branco rounded-lg">x</div>
+                    <OperadoMain 
+                        Operado={"x"}
+                        stete ={{exibir,setexibir,vetoNumero,setVetoNumero}}
+                    />
+                    <OperadoMain 
+                        Operado={"/"}
+                        stete ={{exibir,setexibir,vetoNumero,setVetoNumero}}
+                    />
 
                     <div className="flex justify-center items-center bg-cinza1 rounded-lg text-branco col-span-2 uppercase text-xl">reset</div>
                     <div className="flex justify-center items-center bg-red1 rounded-lg text-branco col-start-3 col-span-2">=</div>
