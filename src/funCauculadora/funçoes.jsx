@@ -4,13 +4,13 @@ export default  {
 
     //_______________________________________________________________________________
 
-    MostraNaTela: function (exibir,setexibir,NumeroClickado){
-        if(exibir==="0"){
+    MostraNaTela: function (exibir,setexibir,vetoNumero,NumeroClickado){
+        if(exibir==="0" && vetoNumero[0].numero===""){ //para remover o zero 
             setexibir(NumeroClickado)
-        }else if(!(exibir==="0")){
+        }else if(vetoNumero[0].numero.length >= 1){//para concatena
             setexibir(exibir + NumeroClickado)
         }
-    },
+     },
 
     //_______________________________________________________________________________
 
@@ -21,7 +21,6 @@ export default  {
         const croneVetoNumero = [...vetoNumero] // crone vato 
  
         if(croneVetoNumero[tamanhoVeto].operado2.length > 0){// quando operado2 for === 0
-            
             croneVetoNumero.push({numero:Numero,operado2:""}) // vai cria um novo objeto para o veto já com o numero clickado
             setVetoNumero([...croneVetoNumero])
             
@@ -125,6 +124,13 @@ export default  {
             setVetoNumero([...croneVeto])
         }
         console.log(vetoNumero)
+    },
+
+    //________________________________________________________________________
+
+    reset:function(setexibir,setVetoNumero){//para limpa tudo que já foi feito
+        setexibir("0")
+        setVetoNumero([{ operado:"+",numero:"",operado2:""}])
     },
 
 }

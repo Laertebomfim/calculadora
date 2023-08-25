@@ -84,7 +84,13 @@ export default function Main (){
                         Operado={"-"}
                         stete ={{exibir,setexibir,vetoNumero,setVetoNumero}}
                     />
-                    <div className="flex justify-center items-center bg-branco rounded-lg">.</div>
+                    <div className="flex justify-center items-center bg-branco rounded-lg"
+                        onClick={()=>{
+                            fun.MostraNaTela(exibir,setexibir,vetoNumero,",")
+                            fun.armazenaNoVeto(vetoNumero,setVetoNumero,".")
+                        }}
+                    >,</div>
+
 
                     <NumarosMain 
                         Numero="0"
@@ -100,7 +106,11 @@ export default function Main (){
                         stete ={{exibir,setexibir,vetoNumero,setVetoNumero}}
                     />
 
-                    <div className="flex justify-center items-center bg-cinza1 rounded-lg text-branco col-span-2 uppercase text-xl">reset</div>
+                    <div className="flex justify-center items-center bg-cinza1 rounded-lg text-branco col-span-2 uppercase text-xl" 
+                        onClick={()=>{
+                            fun.reset(setexibir,setVetoNumero)
+                        }}
+                    >reset</div>
                     <div className="flex justify-center items-center bg-red1 rounded-lg text-branco col-start-3 col-span-2">=</div>
                 </div>
             </article>

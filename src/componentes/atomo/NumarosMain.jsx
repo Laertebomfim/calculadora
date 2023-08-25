@@ -7,7 +7,7 @@ export default function NumarosMain({Numero,stete}){
             className="flex justify-center items-center bg-branco rounded-lg"
             onClick={
                 (e)=>{
-                    fun.MostraNaTela(exibir,setexibir,e.target.innerText)
+                    fun.MostraNaTela(exibir,setexibir,vetoNumero,e.target.innerText)
                     fun.armazenaNoVeto(vetoNumero,setVetoNumero,e.target.innerText)
                 }
             }
