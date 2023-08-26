@@ -111,7 +111,12 @@ export default function Main (){
                             fun.reset(setexibir,setVetoNumero)
                         }}
                     >reset</div>
-                    <div className="flex justify-center items-center bg-red1 rounded-lg text-branco col-start-3 col-span-2">=</div>
+                    <div
+                        className="flex justify-center items-center bg-red1 rounded-lg text-branco col-start-3 col-span-2"
+                        onClick={()=>{
+                            fun.calcular(vetoNumero,setVetoNumero,setexibir)
+                        }}   
+                    >=</div>
                 </div>
             </article>
         </section>

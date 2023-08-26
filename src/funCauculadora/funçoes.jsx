@@ -1,13 +1,12 @@
 export default  { 
-
-    //esse e um objeto de funçoes
-
     //_______________________________________________________________________________
 
     MostraNaTela: function (exibir,setexibir,vetoNumero,NumeroClickado){
         if(exibir==="0" && vetoNumero[0].numero===""){ //para remover o zero 
             setexibir(NumeroClickado)
         }else if(vetoNumero[0].numero.length >= 1){//para concatena
+            setexibir(exibir + NumeroClickado)
+        }else if(exibir==="-"||exibir==="+"){//quando a conta for iniciada com + ou -
             setexibir(exibir + NumeroClickado)
         }
      },
@@ -18,28 +17,25 @@ export default  {
 
         const tamanhoVeto  = vetoNumero.length - 1 //local do ultiom veto
 
-        const croneVetoNumero = [...vetoNumero] // crone vato 
+        let croneVetoNumero = [...vetoNumero] // crone vato 
  
-        if(croneVetoNumero[tamanhoVeto].operado2.length > 0){// quando operado2 for === 0
-            croneVetoNumero.push({numero:Numero,operado2:""}) // vai cria um novo objeto para o veto já com o numero clickado
-            setVetoNumero([...croneVetoNumero])
+        if(croneVetoNumero[tamanhoVeto].operado2.length > 0){// quando operado2 for > 0
+            croneVetoNumero.push({numero:Numero,operado2:""}) // vai cria um novo objeto para o veto, já com o numero clickado
+            setVetoNumero([...croneVetoNumero])//devolver
             
         }else{
-            
             croneVetoNumero[tamanhoVeto].numero +=Numero // adisionando novo numero 
-            
-            setVetoNumero([...croneVetoNumero])
+            setVetoNumero([...croneVetoNumero])//devolver
         }
-        console.log(vetoNumero)
     },
 
     //_______________________________________________________________________________
 
     funçaoDel:function({vetoNumero,setVetoNumero,exibir,setexibir}){
 
-        const tamanhoVeto  = vetoNumero.length - 1 //posiçao do ultiom veto
+        const tamanhoVeto  = vetoNumero.length - 1 //posição do ultiom veto
 
-        const croneVeto = [...vetoNumero] //crone veto 
+        const croneVeto = [...vetoNumero] //clone veto 
 
         const stringObjetoOperado = croneVeto[tamanhoVeto].operado2 // onde fica armazenado "+ - . / *"
 
@@ -133,5 +129,48 @@ export default  {
         setVetoNumero([{ operado:"+",numero:"",operado2:""}])
     },
 
+    //________________________________________________________________________
+    calcular:function(vetoNumero,setVetoNumero,setexibir){// onde seram feitos todos os calculos 
+        const calculo = {//objeto para calculo 
+            "x":(numero,numero2)=>(numero*numero2),
+            "/":(numero,numero2)=>(numero/numero2),
+            "+":(numero,numero2)=>(numero+numero2),
+            "-":(numero,numero2)=>(numero-numero2)
+        }
+
+        let croneveto = [...vetoNumero]
+        loopcalculo()
+
+        function loopcalculo(){//vei ser repetida essa função ate o veto estiver uma tamanho de 1
+
+            if(croneveto.find((e)=>e.operado2==="x" || e.operado2==="/")){// se tiver multiplicação ou divisão no veto 
+                funcalculo("x","/") 
+            }else{
+                funcalculo("+","-")
+            }
+
+            if(croneveto.length>1){//se o veto for maior que 1
+                loopcalculo()
+            }else{
+                setVetoNumero([{ operado:"+",numero:croneveto[0].numero,operado2:""}])//retorna um novo objeto
+                setexibir(croneveto[0].numero)//mostra na tela
+            }                   
+
+        }
+
+        function funcalculo(Operado,Operado2){//função  para efetua os calculos
+            const indsiOperado = croneveto.findIndex((e)=>e.operado2===Operado || e.operado2===Operado2)//para encontra onde esta o operado 
+
+            const primeiroValo = croneveto[indsiOperado].numero
+            const OperadorParacalculo = croneveto[indsiOperado].operado2
+            const segundoValo = croneveto[indsiOperado + 1 ].numero
+
+            const valor = calculo[OperadorParacalculo](Number(primeiroValo),Number(segundoValo))//vai retorna o valor 
+
+            croneveto[indsiOperado].numero =  valor.toString()//vai devolver o valor em string
+            croneveto[indsiOperado].operado2 = croneveto[indsiOperado + 1].operado2 //vai receber o operador do veto a frente
+            croneveto.splice(indsiOperado+1,1)//vai remover um veto
+        }
+    }
+
 }
-// lembra da order me calculo -5+5*4
