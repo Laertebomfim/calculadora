@@ -8,7 +8,7 @@ export default function OperadoMain({Operado,stete}){
         <div
             className="flex justify-center items-center bg-branco rounded-lg"
             onClick={(e)=>{
-                fun.CalculoOperado(vetoNumero,setVetoNumero,e.target.innerText,setexibir,exibir)
+                fun.inserindoOperado(vetoNumero,setVetoNumero,e.target.innerText,setexibir,exibir)
             }}
         >{Operado}</div>
     )

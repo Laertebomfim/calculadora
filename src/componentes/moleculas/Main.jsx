@@ -2,26 +2,6 @@ import { useState } from "react";
 import NumarosMain from "../atomo/NumarosMain";
 import  fun from "../../funCauculadora/funçoes"
 import OperadoMain from "../atomo/OperadoMain";
-//pega dado  
-//variavel para pega os numeros 
-//outra para reçebe dentro de um veto ou objeto [{numero:121, operedo:/}]  
-
-//funçao reset 
-//limpa o que vai apareçe ne tela 
-//E o que veto
-
-//funçoo del 
-//tem que apaga um numeros das  duas variaves 
-// pega o numero trasforma em string e retira o outimo valor  
-//fazer um verificaçoa nao tiver mas numero no arry de objeto numero ele remove o veto [{numero:, operedo:/}] 
-
-//funçoa iqual 
-//vou pega minha infomaçao do veto 
-//passa por uma  switcase usano (map) um funçao para verifica se tem o parametor para entara na swit adequeda 
-//map com um desconstrudor  para pega o utimo  valo de cada veto 
-
-//funçao manipuladores 
-// no final do veto vai fica a funçao [156,-]
 export default function Main (){
     const [exibir,setexibir] = useState("0")
     const [vetoNumero,setVetoNumero] = useState([{ operado:"+",numero:"",operado2:""}]) 
